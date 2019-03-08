@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyMother</string>
+    <string name="facebook_app_id">2245315335788888</string>
+    <string name="fb_login_protocol_scheme">fb2245315335788888</string>
 </resources>
