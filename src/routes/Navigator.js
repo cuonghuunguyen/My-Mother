@@ -15,6 +15,7 @@ import {
 } from "react-navigation";
 import { colors } from "./../constant/colors";
 import Home from "../screen/Home";
+import Landing from "../screen/LandingScreen";
 const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
@@ -97,11 +98,14 @@ const MyDrawerNavigator = createDrawerNavigator(
   {
     Home: {
       screen: Home
+    },
+    Landing: {
+      screen: Landing
     }
   },
   {
     contentComponent: CustomDrawerComponent,
-    initialRouteName: "Home",
+    initialRouteName: "Landing",
     drawerWidth: (width / 4) * 3,
     contentOptions: {
       activeTintColor: colors.activeRedColor,
