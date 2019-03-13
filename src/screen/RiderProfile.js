@@ -12,27 +12,6 @@ import {
 } from 'react-native';
 
 export default class Profile extends Component {
-  // static navigationOptions = {
-  //   drawerLabel: "Rider",
-  //   drawerIcon: ({ tintColor }) => (
-  //     <Icon name="home" style={[styles.icon, { tintColor: tintColor }]} />
-  //   )
-  // };
-  // state = {
-  //     loading: false,
-  //     data:[
-  //       {id:1, image: require("./img/Avt.png"), name:"Frank Odalthh", time : "20/04/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-  //       {id:2, image: require("./img/Avt.png"), name:"John DoeLink", time : "05/05/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-  //       {id:3, image: require("./img/Avt.png"), name:"March SoulLaComa", time : "24/06/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-  //       {id:4, image: require("./img/Avt.png"), name:"Finn DoRemiFaso", time : "12/08/2018", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-  //       {id:5, image: require("./img/Avt.png"), name:"Maria More More", time : "23/08/2018" , comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-  //       {id:6, image: require("./img/Avt.png"), name:"Clark June Boom!", time : "30/08/2018" , comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-  //       {id:7, image: require("./img/Avt.png"), name:"The googler", time : "12/12/2018", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-  //     ],
-  //     current_page: 1,
-  //     error: null,
-  //     hasMore: true
-  //   }
   constructor(props) {
     super(props);
     this.state = {
@@ -78,22 +57,6 @@ export default class Profile extends Component {
                     <Text style={styles.txt}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an</Text>
                     <Text style={styles.title}>.......</Text>
                     <Text style={styles.title}>Review:</Text>
-                    {/* {
-                     this.state.data.map((item,index) => (
-                        <View key={item.id} style={styles.cmt}>
-                            <Image style={styles.cmtimage} source={item.image}/>
-                        <View style={styles.cmtcontent}>
-                            <View style={styles.cmtcontentHeader}>
-                            <Text  style={styles.cmtname}>{item.name}</Text>
-                            <Text style={styles.cmttime}>
-                                {item.time}
-                            </Text>
-                            </View>
-                            <Text style={styles.txt}>{item.comment}</Text>
-                        </View>
-                        </View>
-                    )) 
-                    } */}
                     {this.state.data.slice(0,this.state.rowsToDisplay).map((item, i) => 
                       <View key={item.id} style={styles.cmt}>
                             <Image style={styles.cmtimage} source={item.image}/>
