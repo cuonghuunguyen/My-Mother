@@ -16,6 +16,7 @@ import {
 import { colors } from "./../constant/colors";
 import Home from "../screen/Home";
 import Landing from "../screen/LandingScreen";
+import Rider from "../screen/RiderProfile";
 const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
@@ -101,11 +102,14 @@ const MyDrawerNavigator = createDrawerNavigator(
     },
     Landing: {
       screen: Landing
+    },
+    Rider:{
+      screen : Rider
     }
   },
   {
     contentComponent: CustomDrawerComponent,
-    initialRouteName: "Landing",
+    initialRouteName: "Rider",
     drawerWidth: (width / 4) * 3,
     contentOptions: {
       activeTintColor: colors.activeRedColor,

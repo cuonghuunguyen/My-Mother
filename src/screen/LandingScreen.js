@@ -21,11 +21,10 @@ export class LandingScreen extends Component {
         clearTimeout(this.timeoutHandle); // This is just necessary in the case that the screen is closed before the timeout fires, otherwise it would cause a memory leak that would trigger the transition regardless, breaking the user experience.
    }
 
-  render() {
+  render() {                                                                                                          
     return (
         <View style={ {flex:1}}>
             <View style={{flex:10}}>
-
             </View>
               <View style = {{flex:40, alignItems:'center'}}>
                     <Image  style={{width:250, height:250}}
