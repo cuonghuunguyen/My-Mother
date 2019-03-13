@@ -100,6 +100,7 @@ export default class GoogleMap extends Component {
           longitude: this.state.longitude,
           latitudeDelta: 1,
           longitudeDelta: 1
+      
         }}
         showsUserLocation={true}
         followUserLocation={true}

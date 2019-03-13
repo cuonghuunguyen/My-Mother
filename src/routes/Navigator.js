@@ -16,7 +16,12 @@ import {
 import { colors } from "./../constant/colors";
 import Home from "../screen/Home";
 import Landing from "../screen/LandingScreen";
+<<<<<<< HEAD
 import Rider from "../screen/RiderProfile";
+=======
+import CustomerProfile from "../screen/CustomerProfile";
+
+>>>>>>> 90796b28930d16c0fd495646c7b2f4526b1230df
 const { width } = Dimensions.get("window");
 
 const styles = StyleSheet.create({
@@ -103,13 +108,22 @@ const MyDrawerNavigator = createDrawerNavigator(
     Landing: {
       screen: Landing
     },
+<<<<<<< HEAD
     Rider:{
       screen : Rider
+=======
+    CustomerProfile:{
+      screen:CustomerProfile
+>>>>>>> 90796b28930d16c0fd495646c7b2f4526b1230df
     }
   },
   {
     contentComponent: CustomDrawerComponent,
+<<<<<<< HEAD
     initialRouteName: "Rider",
+=======
+    initialRouteName: "CustomerProfile",
+>>>>>>> 90796b28930d16c0fd495646c7b2f4526b1230df
     drawerWidth: (width / 4) * 3,
     contentOptions: {
       activeTintColor: colors.activeRedColor,
