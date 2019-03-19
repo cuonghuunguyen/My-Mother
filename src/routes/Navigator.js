@@ -18,7 +18,7 @@ import Home from "../screen/Home";
 import Landing from "../screen/LandingScreen";
 import Rider from "../screen/RiderProfile";
 import CustomerProfile from "../screen/CustomerProfile";
-import HistoryRides from "../screen/HistoryRides";
+import RidesHistory from "../screen/HistoryRides";
 
 const { width } = Dimensions.get("window");
 
@@ -112,13 +112,13 @@ const MyDrawerNavigator = createDrawerNavigator(
     CustomerProfile:{
       screen:CustomerProfile
     },
-    HistoryRides:{
-      screen : HistoryRides
+    RidesHistory:{
+      screen : RidesHistory
     }
   },
   {
     contentComponent: CustomDrawerComponent,
-    initialRouteName: "HistoryRides",
+    initialRouteName: "RidesHistory",
     drawerWidth: (width / 4) * 3,
     contentOptions: {
       activeTintColor: colors.activeRedColor,
