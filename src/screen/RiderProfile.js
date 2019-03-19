@@ -109,12 +109,6 @@ const styles = StyleSheet.create({
     alignSelf:'flex-start',
     
   },
-   pagetitle: {
-    color: "#FFFFFF",
-    fontSize: 24,
-    fontFamily: "Roboto",
-    alignSelf:'flex-end',    
-  },
   avatar: {
     width: 130,
     height: 130,
