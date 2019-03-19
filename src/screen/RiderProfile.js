@@ -7,8 +7,7 @@ import {
   View,
   Image,
   ScrollView,
-  Icon,
-  FlatList
+
 } from 'react-native';
 
 export default class Profile extends Component {

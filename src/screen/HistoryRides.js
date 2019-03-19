@@ -7,8 +7,6 @@ import {
   View,
   Image,
   ScrollView,
-  Icon,
-  FlatList
 } from 'react-native';
 
 export default class Profile extends Component {
@@ -45,11 +43,11 @@ export default class Profile extends Component {
             <View style={styles.body}>
                 
                     {this.state.data.map((item, i) => 
-                        <View key={item.id} style={styles.cmt}>
-                          <Image style={styles.cmtimage} source={item.image}/>
-                          <View style={styles.cmtcontent}>
+                        <View key={item.id} style={styles.content}>
+                          <Image style={styles.historyImage} source={item.image}/>
+                          <View style={styles.historyContent}>
                               
-                              <Text  style={styles.cmtname}>{item.name}</Text>
+                              <Text  style={styles.name}>{item.name}</Text>
 
                               <Text style={styles.txt}>Date : {item.date}</Text>
 
@@ -79,20 +77,27 @@ const styles = StyleSheet.create({
   body: {
     flex: 1,
     padding:15,
-    textAlign: 'left'
+    textAlign: 'left',
   },
-  cmt: {
+  content: {
     paddingLeft: 10,
     paddingRight: 10,
     paddingVertical: 12,
     flexDirection: 'row',
-    alignItems: 'flex-start'
+    alignItems: 'flex-start',
+    marginBottom : 20,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
   },
-  cmtimage:{
-    width:90,
-    height:90,
+  historyContent: {
+    marginLeft: 16,
+    flex: 1,
   },
-  cmtname:{
+  historyImage:{
+    width:100,
+    height:100,
+  },
+  name:{
     fontSize:20,
     fontWeight:"bold",
     marginBottom : 10,
@@ -108,10 +113,7 @@ const styles = StyleSheet.create({
     fontSize : 15,
     color : "red",
   },
-  cmtcontent: {
-    marginLeft: 16,
-    flex: 1,
-  },
+
 
 });
 
