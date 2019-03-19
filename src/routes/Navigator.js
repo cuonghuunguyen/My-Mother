@@ -114,7 +114,7 @@ const MyDrawerNavigator = createDrawerNavigator(
   },
   {
     contentComponent: CustomDrawerComponent,
-    initialRouteName: "CustomerProfile",
+    initialRouteName: "Rider",
     drawerWidth: (width / 4) * 3,
     contentOptions: {
       activeTintColor: colors.activeRedColor,

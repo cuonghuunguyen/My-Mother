@@ -16,13 +16,11 @@ export default class Profile extends Component {
     super(props);
     this.state = {
       data: [
-      {id:1, image: require("./img/Avt.png"), name:"Frank Odalthh", time : "20/04/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:2, image: require("./img/Avt.png"), name:"John DoeLink", time : "05/05/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:3, image: require("./img/Avt.png"), name:"March SoulLaComa", time : "24/06/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:4, image: require("./img/Avt.png"), name:"Finn DoRemiFaso", time : "12/08/2018", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:5, image: require("./img/Avt.png"), name:"Maria More More", time : "23/08/2018" , comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:6, image: require("./img/Avt.png"), name:"Clark June Boom!", time : "30/08/2018" , comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:7, image: require("./img/Avt.png"), name:"The googler", time : "12/12/2018", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+      {id:1, image: require("./img/Avt.png"), name:"Frank Odalthh", time : "20/04/2017", pick:"99 To Hien Thanh, Son Tra, Da Nang",droff:"35 Ong Ich Khiem, Hai Chau, Da Nang"},
+      {id:2, image: require("./img/Avt.png"), name:"John DoeLink", time : "05/05/2017", pick:"101B Le Huu Trac, Son Tra, Da Nang",droff:"35 Ong Ich Khiem, Hai Chau, Da Nang"},
+      {id:3, image: require("./img/Avt.png"), name:"March SoulLaComa", time : "24/06/2017", pick:"99 To Hien Thanh, Son Tra, Da Nang",droff:"60 Cao Thang, Hai Chau, Da Nang"},
+      {id:4, image: require("./img/Avt.png"), name:"Finn DoRemiFaso", time : "12/08/2018", pick:"101B Le Huu Trac, Son Tra, Da Nang",droff:"138 Ngo Quyen, Son Tra, Da Nang"},
+      {id:5, image: require("./img/Avt.png"), name:"Maria More More", time : "23/08/2018" , pick:"80B Le Duan, Hai Chau Da Nang",droff:"60 Cao Thang, Hai Chau, Da Nang"},
     ],
     rowsToDisplay : 3,
     show : true
@@ -59,11 +57,11 @@ export default class Profile extends Component {
                 <View style={styles.body}>
                     <View style={styles.bodyContent}>
                     <Text style={styles.title}>Description:</Text>
-                    <Text style={styles.txt}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an</Text>
+                    <Text style={styles.txt}>99 To Hien Thanh, Son Tra, Da Nangam deseruisse consequuntur ius an</Text>
                     <Text>Phone: xxxxxxxxxxxxxxxxxx</Text>
                     <Text>Address: xxxxxxxxxxxxx</Text>
                     <Text style={styles.title}>Bike information:</Text>
-                    <Text style={styles.txt}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an</Text>
+                    <Text style={styles.txt}>99 To Hien Thanh, Son Tra, Da Nangam deseruisse consequuntur ius an</Text>
                     <Text style={styles.title}>.......</Text>
                     <Text style={styles.title}>Review:</Text>
                     {this.state.data.slice(0,this.state.rowsToDisplay).map((item, i) => 
