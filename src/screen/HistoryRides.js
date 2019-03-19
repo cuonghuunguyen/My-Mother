@@ -38,7 +38,7 @@ export default class Profile extends Component {
   render() {
     return (
         <View style={styles.container}>
-          <DrawerHeader navigation={this.props.navigation} title="History Rides" />
+          <DrawerHeader navigation={this.props.navigation} title="Rides History" />
             <ScrollView>
             <View style={styles.body}>
                 
