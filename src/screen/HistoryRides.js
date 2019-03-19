@@ -18,7 +18,7 @@ export default class Profile extends Component {
       {id:2, image: require("./img/Avt.png"), name:"John DoeLink", date : "05/05/2017", time : "15:00", pick:"101B Le Huu Trac, Son Tra, Da Nang",drop:"35 Ong Ich Khiem, Hai Chau, Da Nang",status :"Canceled"},
       {id:3, image: require("./img/Avt.png"), name:"March SoulLaComa", date : "24/06/2017", time : "16:00", pick:"99 To Hien Thanh, Son Tra, Da Nang",drop:"60 Cao Thang, Hai Chau, Da Nang",status :"Done"},
       {id:4, image: require("./img/Avt.png"), name:"Finn DoRemiFaso", date : "12/08/2018", time : "12:30", pick:"101B Le Huu Trac, Son Tra, Da Nang",drop:"138 Ngo Quyen, Son Tra, Da Nang",status :"Done"},
-      {id:5, image: require("./img/Avt.png"), name:"Maria More More", date : "23/08/2018" ,time : "09:30",  pick:"80B Le Duan, Hai Chau Da Nang",drop:"60 Cao Thang, Hai Chau, Da Nang",status :"Canceld"},
+      {id:5, image: require("./img/Avt.png"), name:"Maria More More", date : "23/08/2018" ,time : "09:30",  pick:"80B Le Duan, Hai Chau Da Nang",drop:"60 Cao Thang, Hai Chau, Da Nang",status :"Canceled"},
     ],
   };
   }
@@ -26,11 +26,11 @@ export default class Profile extends Component {
   displayStatus(stt) {
     if (stt == "Done") {
       return (
-        <Text style={styles.txtDone}>Status : {stt}</Text>
+        <Text style={styles.txtDone}> {stt}</Text>
       );
     } else {
       return (
-        <Text style={styles.txtCancel}>Status : {stt}</Text>        
+        <Text style={styles.txtCancel}> {stt}</Text>        
       );
     }
 }
@@ -46,18 +46,38 @@ export default class Profile extends Component {
                         <View key={item.id} style={styles.content}>
                           <Image style={styles.historyImage} source={item.image}/>
                           <View style={styles.historyContent}>
-                              
-                              <Text  style={styles.name}>{item.name}</Text>
 
-                              <Text style={styles.txt}>Date : {item.date}</Text>
+                                <Text  style={styles.name}>{item.name}</Text>
 
-                              <Text style={styles.txt}>Time : {item.time}</Text>
+                              <View style={styles.text}>
+                                <Text style={styles.txt}>Date : </Text>
+                                <Text style={styles.info}>{item.date}</Text>
 
-                              <Text style={styles.txt}>Pick up : {item.pick}</Text>
+                              </View>
 
-                              <Text style={styles.txt}>Drop off : {item.drop}</Text>
+                              <View style={styles.text}>
+                                <Text style={styles.txt}>Time : </Text>
+                                <Text style={styles.info}>{item.time}</Text>
 
-                              {this.displayStatus(item.status)}                                                          
+                              </View>
+
+                              <View style={styles.text}>
+                                <Text style={styles.txt}>Pick up : </Text>
+                                <Text style={styles.info}>{item.pick}</Text>
+
+                              </View>
+
+                              <View style={styles.text}>
+                                <Text style={styles.txt}>Drop off : </Text>
+                                <Text style={styles.info}>{item.drop}</Text>
+                              </View>
+
+                              <View style={styles.text}>
+                                <Text style={styles.txt}>Status : </Text>
+                                {this.displayStatus(item.status)}
+                              </View>
+
+                                                                                        
                           </View>
                         </View>
                         
@@ -90,7 +110,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
   },
   historyContent: {
-    marginLeft: 16,
+    marginLeft: 10,
     flex: 1,
   },
   historyImage:{
@@ -102,8 +122,17 @@ const styles = StyleSheet.create({
     fontWeight:"bold",
     marginBottom : 10,
   },
+  text:{
+    flexDirection: 'row',    
+  }
+  ,
   txt:{
     fontSize : 15,
+    fontWeight:"bold",    
+  },
+  info : {
+    fontSize : 15,
+    flex : 1,
   },
   txtDone : {
     fontSize : 15,
