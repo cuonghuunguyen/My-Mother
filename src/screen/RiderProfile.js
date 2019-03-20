@@ -23,24 +23,34 @@ export default class Profile extends Component {
       {id:6, image: require("./img/Avt.png"), name:"Clark June Boom!", time : "30/08/2018" , comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
       {id:7, image: require("./img/Avt.png"), name:"The googler", time : "12/12/2018", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
     ],
-    rowsToDisplay : 3,
-    show : true
+    // rowsToDisplay : 3,
+    // show : true
+    itemsToShow: 3,
+    expanded: false,
   };
     this.showMore = this.showMore.bind(this);
   }
+  // showMore() {
+  //   let dataLength = this.state.data.length;
+  //   this.setState({rowsToDisplay:dataLength});
+  //   // show more entries
+  //   // switch to "show less"
+  // }
+  // showHide = () => {
+  //   if (this.state.show == true) {
+  //     this.setState({ show: false });
+  //   } else {
+  //     this.setState({ show: true });
+  //   }
+  // };
+
   showMore() {
-    let dataLength = this.state.data.length;
-    this.setState({rowsToDisplay:dataLength});
-    // show more entries
-    // switch to "show less"
+    this.state.itemsToShow === 3 ? (
+      this.setState({ itemsToShow: this.state.data.length, expanded: true })
+    ) : (
+      this.setState({ itemsToShow: 3, expanded: false })
+    )
   }
-  showHide = () => {
-    if (this.state.show == true) {
-      this.setState({ show: false });
-    } else {
-      this.setState({ show: true });
-    }
-  };
 
 
   render() {
@@ -54,7 +64,6 @@ export default class Profile extends Component {
                       <Text style={styles.name}>Pham Van Teo</Text>
                       <Text style={styles.start}>start</Text>
                     </View>
-
                 <View style={styles.body}>
                     <View style={styles.bodyContent}>
                     <Text style={styles.title}>Description:</Text>
@@ -65,13 +74,13 @@ export default class Profile extends Component {
                     <Text style={styles.txt}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an</Text>
                     <Text style={styles.title}>.......</Text>
                     <Text style={styles.title}>Review:</Text>
-                    {this.state.data.slice(0,this.state.rowsToDisplay).map((item, i) => 
+                    {this.state.data.slice(0,this.state.itemsToShow).map((item, i) => 
                         <View key={item.id} style={styles.cmt}>
 
                           <Image style={styles.cmtimage} source={item.image}/>
                           <View style={styles.cmtcontent}>
                               <View style={styles.cmtcontentHeader}>
-                              <Text  style={styles.cmtname}>{item.name}</Text>
+                              <Text style={styles.cmtname}>{item.name}</Text>
                               <Text style={styles.cmttime}>
                                   {item.time}
                               </Text>
@@ -84,8 +93,15 @@ export default class Profile extends Component {
                     </View>
                 </View>
 
-                <View style={styles.review}>
-                        <Text style={styles.titlebutton} onPress={this.showMore}>Read all review</Text>               
+                <View style={styles.review } >
+                        {/* <Text style={styles.titlebutton} onPress={this.showMore}>Read all review</Text>                */}
+                        
+                          {this.state.expanded ? (
+                            <Text style={styles.titlebutton} onPress={this.showMore}>Show less</Text>
+                          ) : (
+                            <Text style={styles.titlebutton} onPress={this.showMore}>Show more</Text>
+                          )}
+                        
                 </View>
             </View>
             </ScrollView>
