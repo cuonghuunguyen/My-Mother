@@ -15,34 +15,22 @@ export default class Profile extends Component {
     super(props);
     this.state = {
       data: [
-      {id:1, image: require("./img/Avt.png"), name:"Frank Odalthh", time : "20/04/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:2, image: require("./img/Avt.png"), name:"John DoeLink", time : "05/05/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:3, image: require("./img/Avt.png"), name:"March SoulLaComa", time : "24/06/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:4, image: require("./img/Avt.png"), name:"Finn DoRemiFaso", time : "12/08/2018", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:5, image: require("./img/Avt.png"), name:"Maria More More", time : "23/08/2018" , comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:6, image: require("./img/Avt.png"), name:"Clark June Boom!", time : "30/08/2018" , comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-      {id:7, image: require("./img/Avt.png"), name:"The googler", time : "12/12/2018", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
-    ],
-    // rowsToDisplay : 3,
-    // show : true
-    itemsToShow: 3,
-    expanded: false,
-  };
-    this.showMore = this.showMore.bind(this);
-  }
-  // showMore() {
-  //   let dataLength = this.state.data.length;
-  //   this.setState({rowsToDisplay:dataLength});
-  //   // show more entries
-  //   // switch to "show less"
-  // }
-  // showHide = () => {
-  //   if (this.state.show == true) {
-  //     this.setState({ show: false });
-  //   } else {
-  //     this.setState({ show: true });
-  //   }
-  // };
+        {id:1, image: require("./img/Avt.png"), name:"Frank Odalthh", time : "20/04/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+        {id:2, image: require("./img/Avt.png"), name:"John DoeLink", time : "05/05/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+        {id:3, image: require("./img/Avt.png"), name:"March SoulLaComa", time : "24/06/2017", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+        {id:4, image: require("./img/Avt.png"), name:"Finn DoRemiFaso", time : "12/08/2018", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+        {id:5, image: require("./img/Avt.png"), name:"Maria More More", time : "23/08/2018" , comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+        {id:6, image: require("./img/Avt.png"), name:"Clark June Boom!", time : "30/08/2018" , comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+        {id:7, image: require("./img/Avt.png"), name:"The googler", time : "12/12/2018", comment:"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor."},
+      ],
+      profile:[
+        {id:1, image: require("./img/Avt.png"), name:"James Smith", phone:"035xxxxxxx", address:"85 To Hien Thanh, Son Tra", bike:"Toyota BY21-H356"},        
+      ],
+      itemsToShow: 3,
+      expanded: false,
+    };
+      this.showMore = this.showMore.bind(this);
+    }
 
   showMore() {
     this.state.itemsToShow === 3 ? (
@@ -52,58 +40,53 @@ export default class Profile extends Component {
     )
   }
 
-
   render() {
     return (
         <View style={styles.container}>
           <DrawerHeader navigation={this.props.navigation} title="Rider's Profile" />
             <ScrollView>
-            <View style={styles.container}>
-                <Image style={styles.avatar} source={require('./img/Avt.png')}/>
-                    <View style={styles.mainInfo}>
-                      <Text style={styles.name}>Pham Van Teo</Text>
-                      <Text style={styles.start}>start</Text>
-                    </View>
-                <View style={styles.body}>
-                    <View style={styles.bodyContent}>
-                    <Text style={styles.title}>Description:</Text>
-                    <Text style={styles.txt}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an</Text>
-                    <Text>Phone: xxxxxxxxxxxxxxxxxx</Text>
-                    <Text>Address: xxxxxxxxxxxxx</Text>
-                    <Text style={styles.title}>Bike information:</Text>
-                    <Text style={styles.txt}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an</Text>
-                    <Text style={styles.title}>.......</Text>
-                    <Text style={styles.title}>Review:</Text>
-                    {this.state.data.slice(0,this.state.itemsToShow).map((item, i) => 
-                        <View key={item.id} style={styles.cmt}>
+              <View style={styles.container}>
+                  <Image style={styles.avatar} source={this.state.profile[0].image}/>
+                      <View style={styles.mainInfo}>
+                        <Text style={styles.name}>{this.state.profile[0].name}</Text>
+                        {/* <Text style={styles.start}>start</Text> */}
+                      </View>
+            
+                  <View style={styles.body}>
+                      <View style={styles.bodyContent}>
+                        <Text style={styles.title}>Description:</Text>
+                        {/* <Text style={styles.txt}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an</Text> */}
+                        <Text style={styles.txt}>Phone : {this.state.profile[0].phone}</Text>
+                        <Text style={styles.txt}>Address : {this.state.profile[0].address}</Text>
+                        <Text style={styles.title}>Bike information:</Text>
+                        <Text style={styles.txt}>Number : {this.state.profile[0].bike}</Text>
+                        <Text style={styles.title}>.......</Text>
+                        <Text style={styles.title}>Review:</Text>
+                        {this.state.data.slice(0,this.state.itemsToShow).map((item, i) => 
+                            <View key={item.id} style={styles.cmt}>
 
-                          <Image style={styles.cmtimage} source={item.image}/>
-                          <View style={styles.cmtcontent}>
-                              <View style={styles.cmtcontentHeader}>
-                              <Text style={styles.cmtname}>{item.name}</Text>
-                              <Text style={styles.cmttime}>
-                                  {item.time}
-                              </Text>
+                              <Image style={styles.cmtimage} source={item.image}/>
+                              <View style={styles.cmtcontent}>
+                                  <View style={styles.cmtcontentHeader}>
+                                    <Text style={styles.cmtname}>{item.name}</Text>
+                                    <Text style={styles.cmttime}>{item.time}</Text>
+                                  </View>
+                                  <Text style={styles.txt}>{item.comment}</Text>
                               </View>
-                              <Text style={styles.txt}>{item.comment}</Text>
-                          </View>
-                        </View>
-                    )}
-                        
-                    </View>
-                </View>
+                            </View>
+                        )}                       
+                      </View>
+                  </View>
 
-                <View style={styles.review } >
-                        {/* <Text style={styles.titlebutton} onPress={this.showMore}>Read all review</Text>                */}
-                        
-                          {this.state.expanded ? (
-                            <Text style={styles.titlebutton} onPress={this.showMore}>Show less</Text>
-                          ) : (
-                            <Text style={styles.titlebutton} onPress={this.showMore}>Show more</Text>
-                          )}
-                        
-                </View>
-            </View>
+                  <View style={styles.review } >                        
+                    {this.state.expanded ? (
+                      <Text style={styles.titlebutton} onPress={this.showMore}>Show less</Text>
+                    ) : (
+                      <Text style={styles.titlebutton} onPress={this.showMore}>Show more</Text>
+                    )}
+                          
+                  </View>
+              </View>
             </ScrollView>
         </View>
     );
