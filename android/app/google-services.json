@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "562158081357",
+    "firebase_url": "https://my-mother-pick-up-kids.firebaseio.com",
+    "project_id": "my-mother-pick-up-kids",
+    "storage_bucket": "my-mother-pick-up-kids.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:562158081357:android:c4e17d69f340a162",
+        "android_client_info": {
+          "package_name": "com.mymother"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "562158081357-aeavtvv4qpnpo2aen269m4v48cd77uuh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mymother",
+            "certificate_hash": "963a20cf263757d6cd6728bc58dd635b7e14c90a"
+          }
+        },
+        {
+          "client_id": "562158081357-4turdaosh3ipsgrsp7q8c3ttvbr2hcpm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAb4wloGqHlYfVWrtXk3b5QtJCN9QtrZ5M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "562158081357-4turdaosh3ipsgrsp7q8c3ttvbr2hcpm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

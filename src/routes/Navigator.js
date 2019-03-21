@@ -19,6 +19,7 @@ import Landing from "../screen/LandingScreen";
 import Rider from "../screen/RiderProfile";
 import CustomerProfile from "../screen/CustomerProfile";
 import RidesHistory from "../screen/HistoryRides";
+import TrackingOnTheRoad from "../screens/TrackingOnTheRoad";
 
 const { width } = Dimensions.get("window");
 
@@ -106,19 +107,22 @@ const MyDrawerNavigator = createDrawerNavigator(
     Landing: {
       screen: Landing
     },
-    Rider:{
-      screen : Rider
+    Rider: {
+      screen: Rider
     },
-    CustomerProfile:{
-      screen:CustomerProfile
+    CustomerProfile: {
+      screen: CustomerProfile
     },
-    RidesHistory:{
-      screen : RidesHistory
+    RidesHistory: {
+      screen: RidesHistory
+    },
+    TrackingOnTheRoad: {
+      screen: TrackingOnTheRoad
     }
   },
   {
     contentComponent: CustomDrawerComponent,
-    initialRouteName: "RidesHistory",
+    initialRouteName: "TrackingOnTheRoad",
     drawerWidth: (width / 4) * 3,
     contentOptions: {
       activeTintColor: colors.activeRedColor,
