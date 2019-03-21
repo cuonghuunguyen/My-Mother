@@ -116,6 +116,7 @@ android {
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
+            matchingFallbacks = ['release', 'debug']
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
@@ -140,6 +141,7 @@ repositories {
     }
 
 dependencies {
+    implementation project(':react-native-vector-icons')
     implementation project(':react-native-gps-state')
     implementation project(':react-native-maps')
     implementation project(':react-native-gesture-handler')
