@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Dialog, { SlideAnimation } from 'react-native-popup-dialog';
+import Dialog, {DialogTitle, SlideAnimation } from 'react-native-popup-dialog';
 import PropTypes from 'prop-types'
 
 export default class DialogPopup extends Component {
@@ -31,8 +31,12 @@ export default class DialogPopup extends Component {
 				})}
 				rounded={false}
 				width={0.95}
-				height={0.5}
-				dialogTitle={this._dialogTitle}
+				height={this.props.height}
+				//dialogTitle={
+				// 	<DialogTitle
+				// 	title={this.props.title}
+				// 	align="left"
+				//   />}
 			>
 				{children}
 			</Dialog>

@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity, Image, ScrollView, FlatList } from 'react-native'
-import Modal from "react-native-modal"
 import KidImgComponent from '../components/KidImgComponent';
 import DrawerHeader from "../components/DrawerHeader";
 import Icon from "react-native-vector-icons/AntDesign";
 import CustomerInfoComponent from '../components/CustomerInfoComponent';
 import { apiRequestGet } from '../api/api_request'
 import DialogPopup from '../components/dialog/dialog-popup'
+
 
 export class CustomerProfile extends Component {
     constructor(props) {
@@ -18,9 +18,6 @@ export class CustomerProfile extends Component {
     state = {
         visibleModal: null,
     };
-    hideModal(){
-
-    }
     getkidInfor() {
         let urlEnpoint = 'http://5bd05387142d360013a172ee.mockapi.io/kids'
         apiRequestGet(urlEnpoint).then(res => {
@@ -51,7 +48,7 @@ export class CustomerProfile extends Component {
         let customer = this.state.customer;
         return (
             <View style={styles.container}>
-                <DrawerHeader navigation={this.props.navigation} title="Profile" />
+                <DrawerHeader navigation={this.props.navigation} title="Profile"/>
                 <View style={{ flex: 5 }}></View>
 
                 <View style={{ flex: 40 }}>
@@ -77,8 +74,8 @@ export class CustomerProfile extends Component {
                     </View>
                 </View>
 
-                <DialogPopup ref='userprofile' style={{flex:1}}>
-                    <View style={{marginTop:30}} >
+                <DialogPopup ref='userprofile' style={{flex:1}} title="CusProfile" height={0.5}>
+                    <View>
                         <View  style={styles.modalContent}>
                                 <View>
                                     <Image style={styles.cusImg}
