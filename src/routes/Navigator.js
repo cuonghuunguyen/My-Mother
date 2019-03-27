@@ -13,12 +13,18 @@ import {
   createDrawerNavigator,
   DrawerItems
 } from "react-navigation";
-import { colors } from "./../constant/colors";
+import { colors } from "../constant/colors";
 import Home from "../screen/Home";
 import Landing from "../screen/LandingScreen";
 import Rider from "../screen/RiderProfile";
 import CustomerProfile from "../screen/CustomerProfile";
 import RidesHistory from "../screen/HistoryRides";
+
+import KidPicker from "../components/KidPicker";
+import LocationPicker from "../components/LocationPicker";
+import BookOneTimeRide from "../screen/BookOneTimeRide";
+
+const avatar = require("../../assets/images/avatar.png");
 
 const { width } = Dimensions.get("window");
 
@@ -38,7 +44,6 @@ const styles = StyleSheet.create({
     height: 80,
     borderRadius: 50,
     borderWidth: 4,
-    borderStyle: "solid",
     marginLeft: 10,
     borderColor: "#3f8955"
   },
@@ -77,10 +82,7 @@ const CustomDrawerComponent = props => (
   <SafeAreaView style={styles.container}>
     <View style={styles.view}>
       <View>
-        <Image
-          style={styles.image}
-          source={require("../../assets/images/avatar.png")}
-        />
+        <Image style={styles.image} source={avatar} />
       </View>
 
       <View style={styles.customerText}>
@@ -114,11 +116,20 @@ const MyDrawerNavigator = createDrawerNavigator(
     },
     RidesHistory:{
       screen : RidesHistory
+    },
+    KidPicker: {
+      screen: KidPicker
+    },
+    LocationPicker: {
+      screen: LocationPicker
+    },
+    BookOneTimeRide: {
+      screen: BookOneTimeRide
     }
   },
   {
     contentComponent: CustomDrawerComponent,
-    initialRouteName: "Rider",
+    initialRouteName: "BookOneTimeRide",
     drawerWidth: (width / 4) * 3,
     contentOptions: {
       activeTintColor: colors.activeRedColor,

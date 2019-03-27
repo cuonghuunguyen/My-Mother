@@ -5,6 +5,13 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "type": "chrome",
+      "request": "attach",
+      "name": "Attach to Chrome",
+      "port": 8081,
+      "webRoot": "${workspaceFolder}"
+    },
+    {
       "name": "Debug Android",
       "program": "${workspaceRoot}/.vscode/launchReactNative.js",
       "type": "reactnative",
@@ -12,12 +19,6 @@
       "platform": "android",
       "sourceMaps": true,
       "outDir": "${workspaceRoot}/.vscode/.react"
-    },
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}\\index.js"
     }
   ]
 }

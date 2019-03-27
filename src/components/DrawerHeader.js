@@ -4,17 +4,18 @@ import { Header, Left, Right, Body } from "native-base";
 import Icon from "react-native-vector-icons/AntDesign";
 
 export default function DrawerHeader(props) {
+  const { navigation, title } = props;
   return (
     <Header style={styles.header}>
       <Left>
         <Icon
           name="bars"
-          onPress={props.navigation.openDrawer}
+          onPress={navigation.openDrawer}
           style={styles.headerIcon}
         />
       </Left>
       <Body>
-        <Text style={styles.title}>{props.title}</Text>
+        <Text style={styles.title}>{title}</Text>
       </Body>
       <Right />
     </Header>

@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { StyleSheet, Platform, Alert } from 'react-native';
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
-import GPSState from 'react-native-gps-state';
+import React, { Component } from "react";
+import { StyleSheet, Platform, Alert } from "react-native";
+import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import GPSState from "react-native-gps-state";
 
 export default class GoogleMap extends Component {
-  
   constructor(props) {
     super(props);
 
@@ -12,6 +11,36 @@ export default class GoogleMap extends Component {
       latitude: 0,
       longitude: 0
     };
+  }
+
+  componentWillMount() {
+    GPSState.addListener((status) => {
+      switch (status) {
+        case GPSState.NOT_DETERMINED:
+          alert(
+            "Please, allow the location, for us to do amazing things for you!"
+          );
+          break;
+
+        case GPSState.RESTRICTED:
+          this.showAlert();
+          break;
+
+        case GPSState.DENIED:
+          alert("It`s a shame that you do not allowed us to use location :(");
+          break;
+
+        case GPSState.AUTHORIZED_ALWAYS:
+        case GPSState.AUTHORIZED_WHENINUSE:
+          this.getCurrentPosition();
+          break;
+      }
+    });
+    GPSState.requestAuthorization(GPSState.AUTHORIZED_WHENINUSE);
+  }
+
+  componentWillUnmount() {
+    GPSState.removeListener();
   }
 
   showAlert = () => {
@@ -22,7 +51,10 @@ export default class GoogleMap extends Component {
         {
           text: "Cancel",
           onPress: async () => {
-            Alert.alert('', 'It`s a shame that you do not allowed us to use location :(')
+            Alert.alert(
+              "",
+              "It`s a shame that you do not allowed us to use location :("
+            );
           },
           style: "cancel"
         },
@@ -41,21 +73,21 @@ export default class GoogleMap extends Component {
   getCurrentPosition = () => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        let { latitude, longitude } = position.coords;
+        const { latitude, longitude } = position.coords;
         this.setState({ latitude, longitude });
       },
       (error) => {
-        alert('Can not get your position');
+        alert("Can not get your position");
       },
-      { enableHighAccuracy: false, timeout: 10000, maximumAge: 100000 },
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 100000 }
     );
-  }
+  };
 
   componentDidMount() {
-    GPSState.getStatus().then(status => {
+    GPSState.getStatus().then((status) => {
       if (
-        (Platform.OS === "android" && status === 1) ||
-        (Platform.OS === "ios" && status === 2)
+        (Platform.OS === "android" && status === 1)
+        || (Platform.OS === "ios" && status === 2)
       ) {
         this.showAlert();
       } else if (status === 0 || status === 4 || status === 3) {
@@ -64,37 +96,10 @@ export default class GoogleMap extends Component {
     });
   }
 
-  componentWillMount() {
-    GPSState.addListener((status) => {
-      switch (status) {
-        case GPSState.NOT_DETERMINED:
-          alert('Please, allow the location, for us to do amazing things for you!')
-          break;
-
-        case GPSState.RESTRICTED:
-          this.showAlert();
-          break;
-
-        case GPSState.DENIED:
-          alert('It`s a shame that you do not allowed us to use location :(')
-          break;
-
-        case GPSState.AUTHORIZED_ALWAYS:
-        case GPSState.AUTHORIZED_WHENINUSE:
-          this.getCurrentPosition();
-          break;
-      }
-    })
-    GPSState.requestAuthorization(GPSState.AUTHORIZED_WHENINUSE)
-  }
-
-  componentWillUnmount() {
-    GPSState.removeListener()
-  }
-
   render() {
     return (
-      <MapView style={styles.container}
+      <MapView
+        style={styles.container}
         region={{
           latitude: this.state.latitude,
           longitude: this.state.longitude,
@@ -102,12 +107,12 @@ export default class GoogleMap extends Component {
           longitudeDelta: 1
       
         }}
-        showsUserLocation={true}
-        followUserLocation={true}
-        showsMyLocationButton={true}
-        zoomEnabled={true}
-        zoomControlEnabled={true}
-        loadingEnabled={true}
+        showsUserLocation
+        followUserLocation
+        showsMyLocationButton
+        zoomEnabled
+        zoomControlEnabled
+        loadingEnabled
         provider={PROVIDER_GOOGLE}
         onRegionChange={this.onRegionChange}
       >
@@ -116,7 +121,7 @@ export default class GoogleMap extends Component {
             latitude: this.state.latitude,
             longitude: this.state.longitude
           }}
-          title={"Your Location"}
+          title="Your Location"
         />
       </MapView>
     );
@@ -124,9 +129,9 @@ export default class GoogleMap extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 1
   },
   map: {
-    flex: 1,
+    flex: 1
   }
 });

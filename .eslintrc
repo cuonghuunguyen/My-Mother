@@ -4,25 +4,29 @@
   "env": {
     "jest": true
   },
-  "plugins": ["react"],
   "rules": {
-    "no-use-before-define": "error",
+    "no-use-before-define": "off",
     "react/jsx-filename-extension": "off",
     "react/prop-types": "off",
     "comma-dangle": "off",
     "no-unused-expressions": "error",
     "no-unused-vars": "error",
-    "no-undef": "error"
+    "no-undef": "error",
+    "no-unreachable": "error",
+    "no-duplicate-imports": "error",
+    "no-trailing-spaces": "error",
+    "no-var": "warn",
+    "linebreak-style": "off",
+    "quotes": [2, "double"],
+    "no-alert": "off",
+    "object-curly-newline": "off",
+    "object-curly-spacing": "off",
+    "react/jsx-one-expression-per-line": "off"
   },
   "globals": {
     "fetch": false,
     "import": true,
-    "module": "writeable"
-  },
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true,
-      "modules": true
-    }
+    "module": true,
+    "alert": true
   }
 }
