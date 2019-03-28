@@ -1,6 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "localhost:8000",
-  timeout: 1000,
+  baseURL: "http://mymother.ml/api/",
 });

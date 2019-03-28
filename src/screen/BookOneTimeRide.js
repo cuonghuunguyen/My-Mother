@@ -1,8 +1,8 @@
 /* eslint-disable react/jsx-no-bind */
 import React from "react";
-import { Container, Button, Form, Content } from "native-base";
+import { Container, Button, Form, Content, Footer, Left, Body, Right } from "native-base";
 import DateTimePicker from "react-native-modal-datetime-picker";
-import { TouchableOpacity, Text, Alert } from "react-native";
+import { TouchableOpacity, Text, Alert, View } from "react-native";
 import KidPicker from "../components/KidPicker";
 import DrawerHeader from "../components/DrawerHeader";
 import LocationPicker from "../components/LocationPicker";
@@ -24,7 +24,8 @@ export default class BookOneTimeRide extends React.Component {
       },
       destinationPointTitle: "",
       startTime: new Date(),
-      isTimePickerVisible: false
+      isTimePickerVisible: false,
+      loading: false
     };
   }
 
@@ -64,22 +65,36 @@ export default class BookOneTimeRide extends React.Component {
       destinationPointTitle,
       startPointTitle
     } = this.state;
-    AxiosInstance.post("/book", {
-      data: {
-        user_id: 1,
-        kid_id: kidId,
-        lat_start: startPoint.lat,
-        long_start: startPoint.long,
-        lat_end: destinationPoint.lat,
-        long_end: destinationPoint.long,
-        start_time: startTime,
-        end_point: destinationPointTitle,
-        start_point: startPointTitle
-      }
-    }).then(() => {
+    console.log(this.state);
+    if (!kidId || !startPoint || !startTime || !destinationPoint.lat || !destinationPoint.lng || !startPoint.lat || !startPoint.lng) {
+      Alert.alert("Error", "You have to fill out all the field");
+      return;
+    }
+    this.setState({loading: true});
+
+    AxiosInstance.post("book", {
+      user_id: 1,
+      kid_id: kidId,
+      lat_start: startPoint.lat,
+      long_start: startPoint.lng,
+      lat_end: destinationPoint.lat,
+      long_end: destinationPoint.lng,
+      start_time: `${startTime.getUTCFullYear()}-${
+        (`00${startTime.getUTCMonth() + 1}`).slice(-2)}-${
+        (`00${startTime.getUTCDate()}`).slice(-2)} ${
+        (`00${startTime.getUTCHours()}`).slice(-2)}:${
+        (`00${startTime.getUTCMinutes()}`).slice(-2)}:${
+        (`00${startTime.getUTCSeconds()}`).slice(-2)}`,
+      end_point: destinationPointTitle,
+      start_point: startPointTitle
+    }).then((res) => {
       Alert.alert("Success!!", "You have booked this ride successfully");
+      console.log(res.data);
+      this.setState({loading: false});
     }).catch((error) => {
-      Alert.alert(`Failed!!", "Booked not successfully\n Error: ${error}`);
+      Alert.alert("Failed!!", `Booked not successfully\n Error: ${error}`);
+      console.log(error.response);
+      this.setState({loading: false});
     });
   };
 
@@ -89,14 +104,16 @@ export default class BookOneTimeRide extends React.Component {
       startPointTitle,
       destinationPointTitle,
       startTime,
-      isTimePickerVisible
+      isTimePickerVisible,
+      kidId,
+      loading
     } = this.state;
     return (
       <Container>
         <DrawerHeader title="Book a ride" navigation={navigation} />
         <Content>
-          <KidPicker setKidID={this.setKidID.bind(this)} />
 
+          <KidPicker setKidID={this.setKidID.bind(this)} choosen={kidId} />
           <Form>
             <LocationPicker
               callBack={startPointInfo => this.setStartPointInfo(startPointInfo)
@@ -132,9 +149,11 @@ export default class BookOneTimeRide extends React.Component {
               mode="datetime"
             />
 
-            <Button rounded success onPress={this.confirmBooking}>
-              <Text>Success</Text>
-            </Button>
+            <View style={{justifyContent: "center", alignItems: "center", width: "100%"}}>
+              <Button rounded success onPress={this.confirmBooking} disabled={loading}>
+                <Text style={{padding: 10, fontSize: 20 }}>Book This Ride Now!</Text>
+              </Button>
+            </View>
           </Form>
         </Content>
       </Container>
