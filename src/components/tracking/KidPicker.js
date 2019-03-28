@@ -5,7 +5,7 @@ export default class KidPicker extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: "key1"
+      selected: "key0"
     };
   }
   onValueChange() {
