@@ -19,7 +19,7 @@ export default class KidPicker extends Component {
         <Picker
           note
           mode="dropdown"
-          style={{ width: 120 }}
+          style={{ width: 120, color: "#FFFFFF" }}
           selectedValue={this.state.selected}
           onValueChange={this.onValueChange.bind(this)}
         >
