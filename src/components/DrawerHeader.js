@@ -2,6 +2,7 @@ import React from "react";
 import { Text, StyleSheet } from "react-native";
 import { Header, Left, Right, Body } from "native-base";
 import Icon from "react-native-vector-icons/AntDesign";
+import KidPicker from "./tracking/KidPicker";
 
 export default function DrawerHeader(props) {
   return (
@@ -16,7 +17,9 @@ export default function DrawerHeader(props) {
       <Body>
         <Text style={styles.title}>{props.title}</Text>
       </Body>
-      <Right />
+      <Right>
+        <KidPicker />
+      </Right>
     </Header>
   );
 }
